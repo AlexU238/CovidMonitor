@@ -31,7 +31,7 @@ public class CountryDAO implements CountryDAOToday {
             theQuery = currentSession.createQuery("select c from CountryDBObject as c, SummaryDBObject as s WHERE (lower(c.name) = :name AND c.summaryId=s AND s.date = current_date )", CountryDBObject.class);
 
             theQuery.setParameter("name", countryName.toLowerCase());
-            System.out.println(theQuery.getSingleResult());
+
             return (CountryDBObject) theQuery.getSingleResult();
         } else {
             return new CountryDBObject(new Country("no data", "no", 0, 0, 0));

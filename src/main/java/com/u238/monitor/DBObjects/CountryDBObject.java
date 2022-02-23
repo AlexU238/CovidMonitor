@@ -1,5 +1,6 @@
 package com.u238.monitor.DBObjects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.u238.monitor.model.Country;
 
 import javax.persistence.*;
@@ -29,7 +30,7 @@ public class CountryDBObject {
     @Column(name = "recovered")
     private long recovered;
 
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "summary_id")
     private SummaryDBObject summaryId;
@@ -104,4 +105,17 @@ public class CountryDBObject {
         this.summaryId = summaryId;
     }
 
+
+    @Override
+    public String toString() {
+        return "CountryDBObject{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                ", deaths=" + deaths +
+                ", recovered=" + recovered +
+                ", summaryId=" + summaryId +
+                '}';
+    }
 }

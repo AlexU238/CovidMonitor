@@ -79,6 +79,9 @@ public class CovidDataCollectionService implements DataCollectionService, Format
 
     @Override
     public void createCSVFile() {
+        //was not able to have a method to create a folder for covidData.csv
+        //program just ignored all my tries
+        //find a method if possible
         try (PrintWriter writer = new PrintWriter("covidData.csv")) {
 
             StringBuilder sb = new StringBuilder();
