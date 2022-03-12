@@ -36,4 +36,9 @@ public class LoggerAspect {
         logger.info("Getting object form DB: "+result.toString());
     }
 
+    @After("com.u238.monitor.aspects.Pointcuts.forUtilPackage()")
+    public void utilLog(JoinPoint joinPoint) {
+        logger.info("Util Method: "+joinPoint.getSignature());
+    }
+
 }

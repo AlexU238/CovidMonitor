@@ -16,9 +16,9 @@ public class Pointcuts {
 
     }
 
-    //not used but may come in handy in the future
-    @Pointcut("execution(* com.u238.monitor.dao.*.*(..))")
-    void forDAOPackage(){
+
+    @Pointcut("execution(* com.u238.monitor.utils.*.*(..))")
+    void forUtilPackage(){
 
     }
 
