@@ -7,28 +7,28 @@ import org.aspectj.lang.annotation.Pointcut;
 public class Pointcuts {
 
     @Pointcut("execution(* com.u238.monitor.controller.*.*(..))")
-    void forControllerPackage(){
+    void forControllerPackage() {
 
     }
 
     @Pointcut("execution(* com.u238.monitor.service.*.*(..))")
-    void forServicePackage(){
+    void forServicePackage() {
 
     }
 
 
     @Pointcut("execution(* com.u238.monitor.utils.*.*(..))")
-    void forUtilPackage(){
+    void forUtilPackage() {
 
     }
 
     @Pointcut("execution(* com.u238.monitor.dao.CountryDAO.*(..))")
-    void forCountryDAOPackage(){
+    void forCountryDAOPackage() {
 
     }
 
     @Pointcut("execution(* com.u238.monitor.utils.CSVLoader.getFile(..))")
-    void forCSVLoader(){
+    void forCSVLoader() {
 
     }
 }

@@ -28,10 +28,10 @@ public class IndexController {
 
     @RequestMapping("/")
     public String land(HttpServletRequest request) {
-        logger.info("User with IP : "+HttpUtil.getIp(request));
+        logger.info("User with IP : " + HttpUtil.getIp(request));
 
 
-        if(!checkUtil.check()){
+        if (!checkUtil.check()) {
             dataCollectionService.collectData();
         }
 

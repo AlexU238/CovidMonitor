@@ -33,14 +33,14 @@ public class SummaryDBObject {
     @Column(name = "active")
     private long active;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="summaryId")
-    private List<CountryDBObject>countries;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "summaryId")
+    private List<CountryDBObject> countries;
 
 
     public SummaryDBObject() {
     }
 
-    public SummaryDBObject(Date date,Summary summary) {
+    public SummaryDBObject(Date date, Summary summary) {
         this.date = date;
         this.cases = summary.getCases();
         this.deaths = summary.getDeaths();
@@ -49,8 +49,8 @@ public class SummaryDBObject {
     }
 
     public void addCountry(CountryDBObject countryDBObject) {
-        if(countries==null) {
-            countries=new ArrayList<CountryDBObject>();
+        if (countries == null) {
+            countries = new ArrayList<CountryDBObject>();
         }
         countryDBObject.setSummaryId(this);
         countries.add(countryDBObject);

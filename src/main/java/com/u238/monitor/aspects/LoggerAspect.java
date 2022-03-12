@@ -17,12 +17,12 @@ public class LoggerAspect {
 
     @After("com.u238.monitor.aspects.Pointcuts.forControllerPackage()")
     public void controllerLog(JoinPoint joinPoint) {
-        logger.info("Controller Method: "+joinPoint.getSignature());
+        logger.info("Controller Method: " + joinPoint.getSignature());
     }
 
     @After("com.u238.monitor.aspects.Pointcuts.forServicePackage()")
     public void serviceLog(JoinPoint joinPoint) {
-        logger.info("Service Method: "+joinPoint.getSignature());
+        logger.info("Service Method: " + joinPoint.getSignature());
     }
 
     @After("com.u238.monitor.aspects.Pointcuts.forCSVLoader()")
@@ -30,15 +30,15 @@ public class LoggerAspect {
         logger.info("CSV requested");
     }
 
-    @AfterReturning(pointcut="com.u238.monitor.aspects.Pointcuts.forCountryDAOPackage()",
-            returning="result")
+    @AfterReturning(pointcut = "com.u238.monitor.aspects.Pointcuts.forCountryDAOPackage()",
+            returning = "result")
     public void daoCountryLog(CountryDBObject result) {
-        logger.info("Getting object form DB: "+result.toString());
+        logger.info("Getting object form DB: " + result.toString());
     }
 
     @After("com.u238.monitor.aspects.Pointcuts.forUtilPackage()")
     public void utilLog(JoinPoint joinPoint) {
-        logger.info("Util Method: "+joinPoint.getSignature());
+        logger.info("Util Method: " + joinPoint.getSignature());
     }
 
 }
