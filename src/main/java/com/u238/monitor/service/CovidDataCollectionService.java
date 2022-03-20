@@ -16,15 +16,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.EntityManager;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class CovidDataCollectionService implements DataCollectionService, FormatToCSV, AssignToDB {
+public class CovidDataCollectionService implements DataCollectionService {
 
     private RestTemplate restTemplate;
     private EntityManager entityManager;
@@ -51,12 +49,12 @@ public class CovidDataCollectionService implements DataCollectionService, Format
     @Override
     public void collectData() {
         getCountryData();
-        createCSVFile();
+        fileCountryData(new FormatNameAndActiveToCSV());
         sendToDB();
     }
 
-    @Override
-    public Summary collectDataSummary() {
+
+    private Summary collectDataSummary() {
         return restTemplate.getForObject(restUrlAll, Summary.class);
     }
 
@@ -76,34 +74,9 @@ public class CovidDataCollectionService implements DataCollectionService, Format
 
     }
 
-
-    @Override
-    public void createCSVFile() {
-        //was not able to have a method to create a folder for covidData.csv
-        //program just ignored all my tries
-        //find a method if possible
-        try (PrintWriter writer = new PrintWriter("covidData.csv")) {
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("location");
-            sb.append(',');
-            sb.append("cases");
-            sb.append('\n');
-
-            for (Country country : countryList) {
-                sb.append(country.getCountry());
-                sb.append(',');
-                sb.append(country.getActive());
-                sb.append('\n');
-            }
-
-            writer.write(sb.toString());
-
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+    private void fileCountryData(CountryDataToFile countryDataToFile) {
+        countryDataToFile.createFile(countryList);
     }
-
 
     @Override
     public void sendToDB() {

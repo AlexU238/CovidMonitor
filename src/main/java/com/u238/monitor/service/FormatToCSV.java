@@ -1,6 +1,0 @@
-package com.u238.monitor.service;
-
-public interface FormatToCSV {
-
-    void createCSVFile();
-}
