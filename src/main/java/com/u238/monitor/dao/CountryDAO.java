@@ -8,16 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Component
 public class CountryDAO implements CountryDAOToday {
 
+    @PersistenceContext
     private EntityManager entityManager;
-
-    @Autowired
-    public CountryDAO(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     @Override
     public CountryDBObject getCountryByName(String countryName) {

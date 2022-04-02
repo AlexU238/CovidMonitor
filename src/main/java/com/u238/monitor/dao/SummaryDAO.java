@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -16,12 +17,8 @@ import java.util.Date;
 @Component
 public class SummaryDAO implements SummaryDAOToday {
 
+    @PersistenceContext
     private EntityManager entityManager;
-
-    @Autowired
-    public SummaryDAO(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     @Override
     public SummaryDBObject getTodaySummary() {
